@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.*;
 
-// import edu.sdse.csvprocessor.CityRecord;
-
 public class CityCSVProcessor {
 
     public void readAndProcess(File file) {
@@ -46,9 +44,10 @@ public class CityCSVProcessor {
                 // printing object for first part of the exercise
                 // System.out.println(obj);
             }
-
+            
             // Check map
-            System.out.println(cityMap.get("Oslo"));
+            // System.out.println(cityMap.get("Oslo"));
+            getStats(cityMap);
 
         } catch (Exception e) {
             System.err.println("An error occurred:");
@@ -74,13 +73,42 @@ public class CityCSVProcessor {
 
         return rawValue;
     }
+    
+    // TO DO
+    public void getStats(Map<String, List<CityRecord>> cityMap) {
+        for (String key : cityMap.keySet()) {
+            List<CityRecord> recordList = cityMap.get(key);
+            int entryCount = recordList.size();
 
-    // public void addCity(String city, CityRecord obj) {
-    // if (!cityMap.containsKey(city)) {
-    // cityMap.put(city, new ArrayList<>());
-    // }
-    // cityMap.get(city).add(obj);
-    // }
+            // this gets the record with the minimum year
+            // CityRecord minYearRecord = recordList.stream().min(Comparator.comparingInt(CityRecord::getYear)).get();
+            // System.out.println(minYearRecord);
+
+            int minYear = 3000;
+            int maxYear = 0;
+            int popSum = 0;
+            
+            // loop through the records in the list to find value for each city/key
+            for (CityRecord record : recordList) {
+
+                int year = record.getYear();
+                int pop = record.getPop();
+                
+                if (year < minYear) {
+                    minYear = year;
+                }
+                if (year > maxYear) {
+                    maxYear = year;
+                }
+                popSum += pop;
+            }
+
+            // calculate avg population
+            int avgPop = popSum/entryCount;
+
+            System.out.println("Avarage population of " + key + " (" + minYear + "-" + maxYear + "; " + entryCount + "): " + avgPop);
+        }
+    }
 
     public static final void main(String[] args) {
         CityCSVProcessor reader = new CityCSVProcessor();
