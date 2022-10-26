@@ -8,6 +8,7 @@ public class LibrarySystem {
 	
 	public LibrarySystem() {
 		//TODO: Initialize system with default journals.
+
 	}
 	
 	public void load() throws FileNotFoundException, IOException {
@@ -19,6 +20,7 @@ public class LibrarySystem {
 		File file = new File("data/Authors.csv");
 
 		//TODO: Load authors from file 
+        
 	}
 	
 	protected void loadArticles() throws FileNotFoundException, IOException {
