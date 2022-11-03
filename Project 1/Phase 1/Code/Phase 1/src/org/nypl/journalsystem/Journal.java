@@ -4,12 +4,17 @@ import java.util.*;
 class Journal {
     String name;
     String issn;
-    // ArrayList<String> articles;
-    // int journalCount = 0; 
+    Publisher publisher;
+    int journalCount; 
+    // should this be here? 
+    Map<Integer, Article> articles = new HashMap<>();
 
-    public Journal(String name, String issn) {
+    public Journal(String name, String issn, Publisher publisher) {
         this.name = name;
         this.issn = issn;
+        this.publisher = publisher;
+        this.journalCount = 0;
+        // this.articles = new HashMap<>();
         // this.articles = articles;
     }
 
@@ -17,9 +22,8 @@ class Journal {
     // contents
     // @Override
     public String toString() {
-        return "Journal name: " + name + ", ISSN: " + issn;
+        return "Journal name: " + name + ", ISSN: " + issn + ", Publisher: " + publisher;
     }
-
 }
 
 class Author {
@@ -36,14 +40,18 @@ class Author {
 class Article {
     int id;
     String title;
-    ArrayList<Integer> authors; // int not allowed - why cant have authors object stored here?
+    Map<Integer, Author> authors; // int not allowed - why cant have authors object stored here?
     String journalIssn; // how do i link these without storing the information twice?
 
-    public Article(int id, String title, ArrayList<Integer> authors, String journalIssn) {
+    public Article(int id, String title, Map<Integer, Author> authors, String journalIssn) {
         this.id = id;
         this.title = title;
         this.authors = authors;
         this.journalIssn = journalIssn;
+    }
+
+    public void addArticleToJournal() {
+        
     }
     
 }
@@ -55,5 +63,10 @@ class Publisher {
     public Publisher(String publisherName, String publisherLocation) {
         this.publisherName = publisherName;
         this.publisherLocation = publisherLocation;
+    }
+
+    @Override
+    public String toString() {
+        return publisherName + ", " + publisherLocation;
     }
 }
