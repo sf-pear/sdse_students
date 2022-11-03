@@ -8,7 +8,14 @@ public class LibrarySystem {
 	
 	public LibrarySystem() {
 		//TODO: Initialize system with default journals.
-
+        Journal higherEducationJournal = new Journal("Higher Education", "0018-1560");
+        Journal systemJournal = new Journal("System", " 0346-2511");
+        Journal chemJournal = new Journal("Chem", "2451-9294");
+        Journal natureJournal = new Journal("Nature", "1476-4687");
+        Journal societyJournal = new Journal("Society", "01472011");
+        
+        // check if it's working
+        // System.out.println(higherEducationJournal);
 	}
 	
 	public void load() throws FileNotFoundException, IOException {

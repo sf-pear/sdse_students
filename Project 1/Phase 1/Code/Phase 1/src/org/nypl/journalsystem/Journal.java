@@ -4,21 +4,32 @@ import java.util.*;
 class Journal {
     String name;
     String issn;
-    ArrayList<String> articles;
-    // int journalCount = 0;
+    // ArrayList<String> articles;
+    // int journalCount = 0; 
 
-    public Journal(String name, String issn, ArrayList<String> articles) {
+    public Journal(String name, String issn) {
         this.name = name;
         this.issn = issn;
-        this.articles = articles;
+        // this.articles = articles;
     }
 
     // override toString so it doesn't print the hash of the object, but it's
     // contents
     // @Override
-    // public String toString() {
-    //     return "id: " + id + ", year: " + year + ", city: " + city + ", population: " + population;
-    // }
+    public String toString() {
+        return "Journal name: " + name + ", ISSN: " + issn;
+    }
+
+}
+
+class Author {
+    int id;
+    String name;
+
+    public Author(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
     
 }
 
@@ -37,13 +48,12 @@ class Article {
     
 }
 
-class Author {
-    int id;
-    String name;
+class Publisher {
+    String publisherName;
+    String publisherLocation;
 
-    public Author(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public Publisher(String publisherName, String publisherLocation) {
+        this.publisherName = publisherName;
+        this.publisherLocation = publisherLocation;
     }
-    
 }
