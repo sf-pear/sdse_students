@@ -5,24 +5,34 @@ class Journal {
     String name;
     String issn;
     Publisher publisher;
-    int journalCount; 
     // should this be here? 
-    Map<Integer, Article> articles = new HashMap<>();
+    int journalCount = 0; 
+    ArrayList<Article> articles = new ArrayList<>();
 
     public Journal(String name, String issn, Publisher publisher) {
         this.name = name;
         this.issn = issn;
         this.publisher = publisher;
-        this.journalCount = 0;
-        // this.articles = new HashMap<>();
-        // this.articles = articles;
+    }
+
+    public void addArticleToJournal(Article article) {
+        articles.add(article);
+        journalCount +=1;
+    }
+
+    private String fullIssue() {
+        if (journalCount > 2) {
+            return "Yes"; 
+        } else {
+            return "No";
+        }
     }
 
     // override toString so it doesn't print the hash of the object, but it's
     // contents
     // @Override
     public String toString() {
-        return "Journal name: " + name + ", ISSN: " + issn + ", Publisher: " + publisher;
+        return "Journal name: " + name + "\nISSN: " + issn + "\nPublisher: " + publisher + "\nFull issue: " + fullIssue() + "\nArticles: " + articles + "\n";
     }
 }
 
@@ -37,28 +47,28 @@ class Author {
 
     @Override
     public String toString() {
-        return "Author ID:" + id + ", Author name:" + name;
+        return name;
     }
     
 }
 
 class Article {
-    int id;
+    String id;
     String title;
-    Map<Integer, Author> authors; // int not allowed - why cant have authors object stored here?
+    ArrayList<Author> authors;
     String journalIssn; // how do i link these without storing the information twice?
 
-    public Article(int id, String title, Map<Integer, Author> authors, String journalIssn) {
+    public Article(String id, String title, ArrayList<Author> authors, String journalIssn) {
         this.id = id;
         this.title = title;
         this.authors = authors;
         this.journalIssn = journalIssn;
     }
 
-    public void addArticleToJournal() {
-        
-    }
-    
+    @Override
+    public String toString() {
+        return "\nTitle:" + title + ", Authors:" + authors;
+    }    
 }
 
 class Publisher {
