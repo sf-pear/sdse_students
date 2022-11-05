@@ -27,12 +27,17 @@ class Journal {
 }
 
 class Author {
-    int id;
+    String id;
     String name;
 
-    public Author(int id, String name) {
+    public Author(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Author ID:" + id + ", Author name:" + name;
     }
     
 }
